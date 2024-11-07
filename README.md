@@ -1,8 +1,7 @@
 # Deskripsi
 
 Terbangin merupakan sebuah web app untuk pemesanan tiket pesawat versi yang telah di update.
-Pada branch Terbangin-Docker_build-V2 ini akan berisikan kode lengkap dari web app, database, Dockerfile, dan juga docker-compose. Yang dimana pada branch ini akan dapat dilakukan build image menggunakan docker compose dan juga langsung menjalankan image yang dibuat menjadi container-container dalam satu service
-Yang dimana pada branch ini akan dapat menjalankan docker compose untuk build semua image yang dibutuhkan dan menjalankan nya menjadi container-container dalam satu service.
+Pada branch Terbangin-Docker_build-V2 ini akan berisikan kode lengkap dari web app, database, Dockerfile, dan juga docker-compose. Yang dimana pada branch ini akan dapat dilakukan build image menggunakan docker compose dan juga langsung menjalankan image yang dibuat menjadi container-container dalam satu service.
 
 # Tools
 
