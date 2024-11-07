@@ -19,4 +19,6 @@ router
   .put(flightController.updateFlight)
   .delete(flightController.deleteFlight);
 
+  router.route("/continent").get(flightController.getFlightsbyContinent);
+
 module.exports = router;
