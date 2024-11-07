@@ -17,6 +17,6 @@ Pada branch Terbangin-Docker_run-V2 ini akan berisikan docker-compose. Yang dima
 4. Jalankan terlebih dahulu Docker Desktop.
 5. Pull branch ini ke folder local.
 6. Masuk ke folder local tersebut melalui terminal, boleh menggunakan cmd, bash, ataupun powershell.
-7. Masukkan command "docker compose up -d", maka docker compose akan membuat image dan langsung menjalankannya dalam container.
-8. Menunggu sampai proses build dan menjalankan selesai (akan memakan waktu yang cukup lama).
+7. Masukkan command "docker compose up -d", maka docker compose akan mengdownload image dan langsung menjalankannya dalam container.
+8. Menunggu sampai proses download dan menjalankan selesai (akan memakan waktu yang cukup lama).
 9. Setelah container telah berjalan dengan stabil, silahkan masuk ke browser untuk mengakses http://localhost:5173 (jika data belum tampil, boleh ditunggu beberapa saat karna untuk proses container database sedikit memakan waktu yang lebih lama untuk memasukkan data kedalam database)
