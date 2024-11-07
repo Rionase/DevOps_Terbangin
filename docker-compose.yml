@@ -1,0 +1,57 @@
+services:
+  mysql:
+    build:
+      context: DB/
+      dockerfile: Dockerfile # Specify your backend Dockerfile
+    container_name: "database"
+    ports:
+      - "3307:3306"
+    restart: always
+    networks:
+      - app-network
+
+  backend:
+    container_name: "backend"
+    build:
+      context: BE/
+      dockerfile: Dockerfile # Specify your backend Dockerfile
+    volumes:
+      - ./BE/app/.env:/app/.env
+    links:
+      - mysql
+    #command: "npm run dev"
+    ports:
+      - 3000:3000
+    networks:
+      - app-network
+
+  frontend:
+    container_name: "frontend"
+    build:
+      context: FE/
+      dockerfile: Dockerfile # Specify your backend Dockerfile
+    volumes:
+      - ./FE/app/.env:/app/.env
+    links:
+      - backend
+    ports:
+      - 5173:5173
+    networks:
+      - app-network
+
+  tunnel:
+    image: cloudflare/cloudflared
+    container_name: "tunnel"
+    restart: unless-stopped
+    command: tunnel run richard-be # Ganti dengan nama tunnel Anda
+    environment:
+      TUNNEL_TOKEN: "eyJhIjoiMWMzYzA5ODY2ZjU0ZDNkNzkzYTg0NzEwOGI0N2RiZjUiLCJ0IjoiMTliMTE3MTYtMTYwNi00NjU5LWI3ZmYtZDM2MzIyNjIzMDgwIiwicyI6IlpUQm1OREUxWldFdE1tRmtOUzAwTjJWaExUZzVNRFV0TmpOaE1tWmlaall3TjJVNCJ9" # Token tunnel dari Cloudflare
+    volumes:
+      - ./CF:/etc/cloudflared # Menyimpan konfigurasi lokal
+    links:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
