@@ -1,0 +1,27 @@
+name: verify
+
+on: [push, pull_request]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: BE/app
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start server
+        run: npm run dev &
+
+      - name: Run performance test
+        run: npx autocannon http://localhost:3000/api/v1/flight
