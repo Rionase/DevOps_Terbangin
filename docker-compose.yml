@@ -1,0 +1,46 @@
+services:
+  mysql:
+    image: resolt123/terbangin:DB
+    container_name: "database"
+    ports:
+      - "3307:3306"
+    restart: always
+    networks:
+      - app-network
+
+  backend:
+    container_name: "backend"
+    image: resolt123/terbangin:BE-V1
+    links:
+      - mysql
+    ports:
+      - 3000:3000
+    networks:
+      - app-network
+
+  frontend:
+    container_name: "frontend"
+    image: resolt123/terbangin:FE-V1
+    links:
+      - backend
+    ports:
+      - 5173:5173
+    networks:
+      - app-network
+
+  tunnel:
+    image: resolt123/terbangin:CF
+    container_name: "tunnel"
+    restart: unless-stopped
+    command: tunnel run richard-be # Ganti dengan nama tunnel Anda
+    environment:
+      TUNNEL_TOKEN: "eyJhIjoiMWMzYzA5ODY2ZjU0ZDNkNzkzYTg0NzEwOGI0N2RiZjUiLCJ0IjoiMTliMTE3MTYtMTYwNi00NjU5LWI3ZmYtZDM2MzIyNjIzMDgwIiwicyI6IlpUQm1OREUxWldFdE1tRmtOUzAwTjJWaExUZzVNRFV0TmpOaE1tWmlaall3TjJVNCJ9" # Token tunnel dari Cloudflare
+    volumes:
+      - ./CF:/etc/cloudflared # Menyimpan konfigurasi lokal
+    links:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
