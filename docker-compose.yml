@@ -10,7 +10,7 @@ services:
 
   backend:
     container_name: "backend"
-    image: resolt123/terbangin:BE-V1
+    image: resolt123/terbangin:BE-V2
     links:
       - mysql
     ports:
@@ -20,7 +20,7 @@ services:
 
   frontend:
     container_name: "frontend"
-    image: resolt123/terbangin:FE-V1
+    image: resolt123/terbangin:FE-V2
     links:
       - backend
     ports:
