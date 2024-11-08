@@ -26,3 +26,4 @@ Pada branch Terbangin-Docker_build-V1 ini akan berisikan kode lengkap dari web a
 
 1. Untuk mengecek python sudah terinstall, bisa langsung menggunakan command "python" di cmd
 2. Untuk mengecek docker compose sudah terinstall, bisa langsung menggunakan command "docker compose" di cmd
+3. Node modules tidak boleh ada di dalam /BE/app dan /FE/app, hapus saja jika ada
