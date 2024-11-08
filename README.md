@@ -17,6 +17,12 @@ Pada branch Terbangin-Docker_build-V1 ini akan berisikan kode lengkap dari web a
 4. Jalankan terlebih dahulu Docker Desktop.
 5. Pull branch ini ke folder local.
 6. Masuk ke folder local tersebut melalui terminal, boleh menggunakan cmd, bash, ataupun powershell.
-7. Masukkan command "docker compose up --build -d", maka docker compose akan membuat image dan langsung menjalankannya dalam container.
-8. Menunggu sampai proses build dan menjalankan selesai (akan memakan waktu yang cukup lama).
-9. Setelah container telah berjalan dengan stabil, silahkan masuk ke browser untuk mengakses http://localhost:5173 (jika data belum tampil, boleh ditunggu beberapa saat karna untuk proses container database sedikit memakan waktu yang lebih lama untuk memasukkan data kedalam database)
+7. Masukkan command "docker compose build --no-cache", maka docker compose akan membuat image dengan tidak ada cache.
+8. Masukkan command "docker compose up", maka docker compose akan menjalankannya container-nya.
+9. Menunggu sampai proses build dan menjalankan selesai (akan memakan waktu yang cukup lama).
+10. Setelah container telah berjalan dengan stabil, silahkan masuk ke browser untuk mengakses http://localhost:5173 (jika data belum tampil, boleh ditunggu beberapa saat karna untuk proses container database sedikit memakan waktu yang lebih lama untuk memasukkan data kedalam database)
+
+# Notes
+
+1. Untuk mengecek python sudah terinstall, bisa langsung menggunakan command "python" di cmd
+2. Untuk mengecek docker compose sudah terinstall, bisa langsung menggunakan command "docker compose" di cmd
