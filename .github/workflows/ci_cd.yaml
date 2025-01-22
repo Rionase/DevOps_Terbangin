@@ -21,7 +21,7 @@ jobs:
       - name: Build and Push Backend Image
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/terbangin:BE-V3 ./BE
-          docker push ${{ secrets.DOCKER_USERNAME }}/terbangin:BE-V33
+          docker push ${{ secrets.DOCKER_USERNAME }}/terbangin:BE-V3
 
   build-frontend:
     runs-on: ubuntu-latest
